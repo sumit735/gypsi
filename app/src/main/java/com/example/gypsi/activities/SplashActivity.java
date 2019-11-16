@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /*if(sharedPreferenceClass.getValue_string("LOGIN_STATUS").equalsIgnoreCase("1")){
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class))
                     finish();
                 }else{*/
                     startActivity(new Intent(SplashActivity.this, RegisterActivity.class));

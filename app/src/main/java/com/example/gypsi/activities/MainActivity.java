@@ -23,6 +23,7 @@ import com.example.gypsi.R;
 import com.example.gypsi.SharedPreferenceClass;
 import com.example.gypsi.adapters.DrawerItemCustomAdapter;
 import com.example.gypsi.fragment.AboutUsFragment;
+import com.example.gypsi.fragment.BlogFragment;
 import com.example.gypsi.fragment.ContactUsFragment;
 import com.example.gypsi.fragment.HomeFragment;
 import com.example.gypsi.model.DataModel;
@@ -127,13 +128,16 @@ public class MainActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+               Intent intent = new Intent(MainActivity.this,ConnectActivity.class);
+               startActivity(intent);
+
                 break;
             case 1:
-                fragment = new AboutUsFragment();
+                Intent intent1 = new Intent(MainActivity.this,TripPlanActivity.class);
+                startActivity(intent1);
                 break;
             case 2:
-                fragment = new AboutUsFragment();
+                fragment = new BlogFragment();
                 break;
 
             case 3:

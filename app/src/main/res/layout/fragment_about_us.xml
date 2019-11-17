@@ -35,21 +35,16 @@
 
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleInverse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/large_progress_bar"
-        android:indeterminateDuration="1000"
-        android:visibility="gone" />
 
-    <WebView
-        android:id="@+id/aboutUsWebView"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/imageView"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"
+        android:text="For most of us, it's sufficient to think of an app this way: an app is a software program that you use online or on mobile devices. Apps often have a specific narrow use, such as a “shopping app” for your smartphone. But that's not always the case. Some are very broad and perform a lot of tasks"
+         />
+
 
 
 </LinearLayout>

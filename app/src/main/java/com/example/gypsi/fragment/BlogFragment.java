@@ -2,21 +2,14 @@ package com.example.gypsi.fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,12 +20,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.gypsi.R;
 import com.example.gypsi.activities.MainActivity;
-import com.example.gypsi.helpers.ProgressBarHandler;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AboutUsFragment extends Fragment {
+public class BlogFragment extends Fragment {
     String about;
     // TextView textView;
     Context context;
@@ -44,7 +36,7 @@ public class AboutUsFragment extends Fragment {
 
     boolean isNetwork;
 
-    public AboutUsFragment() {
+    public BlogFragment() {
         // Required empty public constructor
     }
 

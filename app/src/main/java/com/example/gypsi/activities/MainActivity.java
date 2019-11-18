@@ -92,19 +92,26 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
+            Fragment fragment1 = null;
             switch (item.getItemId()) {
-                case R.id.navigation_shop:
-                    toolbar.setTitle("Shop");
+                case R.id.navigation_home:
+                    toolbar.setTitle("Home");
+                    fragment1 = new HomeFragment();
                     return true;
                 case R.id.navigation_gifts:
                     toolbar.setTitle("My Gifts");
+                    Intent preference = new Intent(MainActivity.this,MyPreferencesActivity.class);
+                    startActivity(preference);
                     return true;
                 case R.id.navigation_cart:
-                    toolbar.setTitle("Cart");
+                    toolbar.setTitle("Chat");
+                    Intent chat = new Intent(MainActivity.this,MyChatActivity.class);
+                    startActivity(chat);
                     return true;
                 case R.id.navigation_profile:
                     toolbar.setTitle("Profile");
+                    Intent profile = new Intent(MainActivity.this,MyProfileActivity.class);
+                    startActivity(profile);
                     return true;
             }
             return false;

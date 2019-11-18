@@ -60,9 +60,6 @@ public class AboutUsFragment extends Fragment {
         context = getActivity();
 
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(Html.fromHtml(getArguments().getString("title")));
-        Toolbar toolbar = ((MainActivity) getActivity()).toolbar;
-        ((MainActivity) getActivity()).toolbar.setTitleTextColor(getResources().getColor(R.color.toolbarTitleColor));
         view.setFocusableInTouchMode(true);
         view.requestFocus();
 

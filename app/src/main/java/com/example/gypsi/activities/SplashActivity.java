@@ -34,13 +34,13 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                /*if(sharedPreferenceClass.getValue_string("LOGIN_STATUS").equalsIgnoreCase("1")){
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class))
+                if(sharedPreferenceClass.getValue_string("LOGIN_STATUS").equalsIgnoreCase("1")){
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
-                }else{*/
+                }else{
                     startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
                     finish();
-                //}
+                }
 
             }
         },1000);

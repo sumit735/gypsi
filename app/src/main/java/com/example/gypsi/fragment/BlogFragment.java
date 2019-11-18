@@ -44,17 +44,13 @@ public class BlogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-       /* getActionBar().setTitle(getArguments().getString(""));
-        setHasOptionsMenu(true);*/
+    
 
         final View view = inflater.inflate(R.layout.fragment_about_us, container, false);
         context = getActivity();
 
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(Html.fromHtml(getArguments().getString("title")));
-        Toolbar toolbar = ((MainActivity) getActivity()).toolbar;
-        ((MainActivity) getActivity()).toolbar.setTitleTextColor(getResources().getColor(R.color.toolbarTitleColor));
+
         view.setFocusableInTouchMode(true);
         view.requestFocus();
 

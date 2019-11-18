@@ -13,6 +13,7 @@ import androidx.core.widget.NestedScrollView;
 
 
 import com.example.gypsi.R;
+import com.example.gypsi.SharedPreferenceClass;
 import com.example.gypsi.helpers.InputValidation;
 import com.example.gypsi.model.User;
 import com.example.gypsi.sql.DatabaseHelper;
@@ -34,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout textInputLayoutPassword;
 
     private TextInputLayout textInputLayoutConfirmPassword;
-
+    SharedPreferenceClass sharedPreferenceClass;
     private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
@@ -53,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 //
 //        getSupportActionBar().hide();
-
+        sharedPreferenceClass = new SharedPreferenceClass(RegisterActivity.this);
         initViews();
         initListeners();
         initObjects();
@@ -147,6 +148,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setName(textInputEditTextName.getText().toString().trim());
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
+
+            sharedPreferenceClass.setValue_string("LOGIN_STATUS","1");
+          //  sharedPreferenceClass.setValue_string("LOGIN_ID",user_id);
+            sharedPreferenceClass.setValue_string("EMAIL_ID",textInputEditTextEmail.getText().toString().trim());
+            sharedPreferenceClass.setValue_string("NAME_STR",textInputEditTextName.getText().toString().trim());
 
             databaseHelper.addUser(user);
             Intent intent = new Intent(

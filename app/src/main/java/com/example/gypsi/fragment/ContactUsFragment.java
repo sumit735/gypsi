@@ -58,14 +58,7 @@ public class ContactUsFragment extends Fragment {
         context = getActivity();
 
 
-     //   TextView categoryTitle = (TextView) v.findViewById(R.id.categoryTitle);
-        Typeface castDescriptionTypeface = Typeface.createFromAsset(context.getAssets(),context.getResources().getString(R.string.fonts));
-        /*categoryTitle.setTypeface(castDescriptionTypeface);
-        categoryTitle.setText(getArguments().getString("title"));*/
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle(getArguments().getString("title"));
-        // Kushal - set Id to back button and text in Toolabr
-        Toolbar toolbar = ((MainActivity) getActivity()).toolbar;
-        //setIdToActionBarBackButton(toolbar);
+
 
         contactFormTitle = (TextView) v.findViewById(R.id.contactFormTitle);
         Typeface contactFormTitleTypeface = Typeface.createFromAsset(context.getAssets(),context.getResources().getString(R.string.fonts));

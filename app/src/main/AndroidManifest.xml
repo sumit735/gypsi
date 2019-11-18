@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.TripPlanActivity"></activity>
+        <activity android:name=".activities.MyChatActivity"></activity>
+        <activity android:name=".activities.MyPreferencesActivity" />
+        <activity android:name=".activities.MyProfileActivity" />
+        <activity android:name=".activities.TripPlanActivity" />
         <activity android:name=".activities.ConnectActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.RegisterActivity" />

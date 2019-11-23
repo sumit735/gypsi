@@ -16,4 +16,5 @@
     <color name="bgBottomNavigation">#fe485a</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="progress_bar_line">#CF9135</color>
 </resources>

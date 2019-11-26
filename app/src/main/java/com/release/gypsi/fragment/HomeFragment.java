@@ -1,4 +1,4 @@
-package com.example.gypsi.fragment;
+package com.release.gypsi.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,9 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.gypsi.R;
-import com.example.gypsi.SharedPreferenceClass;
-import com.example.gypsi.helpers.ProgressBarHandler;
+import com.release.gypsi.R;
+import com.release.gypsi.SharedPreferenceClass;
+import com.release.gypsi.helpers.ProgressBarHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;

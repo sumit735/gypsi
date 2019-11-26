@@ -1,16 +1,17 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.gypsi.R;
+import com.release.gypsi.R;
 
-public class MyChatActivity extends AppCompatActivity {
+
+public class TripPlanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_chat);
+        setContentView(R.layout.activity_trip_plan);
     }
 }

@@ -22,8 +22,8 @@
             android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <EditText
                 android:id="@+id/destination"
@@ -42,10 +42,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_toRightOf="@+id/destination"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_edittext"
                 android:drawableRight="@drawable/ic_search_black_24dp"
                 android:hint="Source  "
-                android:layout_weight="1"
                 android:paddingLeft="5dp"
                 android:textSize="25dp" />
 
@@ -53,8 +53,8 @@
 
         <com.vivekkaushik.datepicker.DatePickerTimeline
             android:id="@+id/dateTimeline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="103dp"
             android:layout_below="@+id/linearlayout"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -66,17 +66,17 @@
 
 
         <com.github.guilhe.views.SeekBarRangedView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dateTimeline"
             android:layout_marginTop="10dp"
-            custom:currentMin="10"
-
             custom:backgroundColor="#C0C0C0"
-            custom:progressColor="@color/progress_bar_line"
+
             custom:backgroundHeight="10dp"
+            custom:currentMin="10"
+            custom:progressColor="@color/progress_bar_line"
             custom:progressHeight="20dp"
-            custom:rounded="true"/>
+            custom:rounded="true" />
 
     </RelativeLayout>
 

@@ -1,4 +1,4 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,14 +19,14 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.gypsi.R;
-import com.example.gypsi.SharedPreferenceClass;
-import com.example.gypsi.adapters.DrawerItemCustomAdapter;
-import com.example.gypsi.fragment.AboutUsFragment;
-import com.example.gypsi.fragment.BlogFragment;
-import com.example.gypsi.fragment.ContactUsFragment;
-import com.example.gypsi.fragment.HomeFragment;
-import com.example.gypsi.model.DataModel;
+import com.release.gypsi.R;
+import com.release.gypsi.SharedPreferenceClass;
+import com.release.gypsi.adapters.DrawerItemCustomAdapter;
+import com.release.gypsi.fragment.AboutUsFragment;
+import com.release.gypsi.fragment.BlogFragment;
+import com.release.gypsi.fragment.ContactUsFragment;
+import com.release.gypsi.fragment.HomeFragment;
+import com.release.gypsi.model.DataModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_profile:
                     toolbar.setTitle("Profile");
-                    Intent profile = new Intent(MainActivity.this,MyProfileActivity.class);
+                    Intent profile = new Intent(MainActivity.this, MyProfileActivity.class);
                     startActivity(profile);
                     return true;
             }

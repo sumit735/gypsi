@@ -1,4 +1,4 @@
-package com.example.gypsi.adapters;
+package com.release.gypsi.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.gypsi.R;
-import com.example.gypsi.model.User;
+import com.release.gypsi.R;
+import com.release.gypsi.model.User;
 
 import java.util.List;
 

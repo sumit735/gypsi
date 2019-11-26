@@ -1,4 +1,4 @@
-package com.example.gypsi.model;
+package com.release.gypsi.model;
 
 /**
  * Created by lalit on 9/12/2016.

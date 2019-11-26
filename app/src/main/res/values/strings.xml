@@ -25,6 +25,11 @@
     <string name="title_profile">Profile</string>
     <string name="text_title">Android Tutorials Hub</string>
 
+    <!--Facebook app id-->
+    <string name="facebook_app_id">2402179506554236</string>
+    <string name="fb_login_protocol_scheme">fb2402179506554236</string>
+
+
     <string-array name="navigation_drawer_items_array">
         <item>Home</item>
         <item>Movies</item>

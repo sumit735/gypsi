@@ -1,10 +1,11 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.gypsi.R;
+import com.release.gypsi.R;
+
 
 public class ConnectActivity extends AppCompatActivity {
 

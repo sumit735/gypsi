@@ -1,4 +1,4 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gypsi.R;
-import com.example.gypsi.adapters.UsersRecyclerAdapter;
-import com.example.gypsi.model.User;
-import com.example.gypsi.sql.DatabaseHelper;
+import com.release.gypsi.R;
+import com.release.gypsi.adapters.UsersRecyclerAdapter;
+import com.release.gypsi.model.User;
+import com.release.gypsi.sql.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;

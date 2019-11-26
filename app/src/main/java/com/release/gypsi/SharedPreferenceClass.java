@@ -1,4 +1,4 @@
-package com.example.gypsi;
+package com.release.gypsi;
 
 import android.app.Activity;
 import android.content.Context;

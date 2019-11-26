@@ -1,4 +1,4 @@
-package com.example.gypsi.adapters;
+package com.release.gypsi.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.gypsi.R;
-import com.example.gypsi.model.DataModel;
+import com.release.gypsi.R;
+import com.release.gypsi.model.DataModel;
 
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {

@@ -1,4 +1,4 @@
-package com.example.gypsi.model;
+package com.release.gypsi.model;
 
 public class DataModel {
 

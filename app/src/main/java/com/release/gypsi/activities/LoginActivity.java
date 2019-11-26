@@ -1,4 +1,4 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.NestedScrollView;
 
-import com.example.gypsi.R;
-import com.example.gypsi.helpers.InputValidation;
-import com.example.gypsi.sql.DatabaseHelper;
+import com.release.gypsi.R;
+import com.release.gypsi.helpers.InputValidation;
+import com.release.gypsi.sql.DatabaseHelper;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;

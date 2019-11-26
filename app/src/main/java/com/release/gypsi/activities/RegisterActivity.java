@@ -1,4 +1,4 @@
-package com.example.gypsi.activities;
+package com.release.gypsi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,14 +12,22 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.widget.NestedScrollView;
 
 
-import com.example.gypsi.R;
-import com.example.gypsi.SharedPreferenceClass;
-import com.example.gypsi.helpers.InputValidation;
-import com.example.gypsi.model.User;
-import com.example.gypsi.sql.DatabaseHelper;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.release.gypsi.R;
+import com.release.gypsi.SharedPreferenceClass;
+import com.release.gypsi.helpers.InputValidation;
+import com.release.gypsi.model.User;
+import com.release.gypsi.sql.DatabaseHelper;
+
+import java.util.Arrays;
 
 /**
  * Created by lalit on 8/27/2016.
@@ -47,17 +55,32 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
     private User user;
-
+    CallbackManager callbackManager;
+    LoginButton loginButton;
+    private static final String EMAIL = "email";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-//
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+        callbackManager = CallbackManager.Factory.create();
 //        getSupportActionBar().hide();
         sharedPreferenceClass = new SharedPreferenceClass(RegisterActivity.this);
         initViews();
         initListeners();
         initObjects();
+
+
+
+
+
+        loginButton = (LoginButton) findViewById(R.id.login_button);
+        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+        // If you are using in a fragment, call loginButton.setFragment(this);
+
+
+
     }
 
     /**
@@ -180,4 +203,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextPassword.setText(null);
         textInputEditTextConfirmPassword.setText(null);
     }
+
+
+
+
 }

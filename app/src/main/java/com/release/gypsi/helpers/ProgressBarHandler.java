@@ -1,4 +1,4 @@
-package com.example.gypsi.helpers;
+package com.release.gypsi.helpers;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import com.example.gypsi.R;
+import com.release.gypsi.R;
 
 /**
  * Created by User on 10-02-2017.
@@ -29,14 +29,10 @@ public class ProgressBarHandler {
         RelativeLayout.LayoutParams params = new
                 RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);*/
 
-        //RelativeLayout rl = new RelativeLayout(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         bar = (RelativeLayout) inflater.inflate(R.layout.progress_bar_layout, null);
-      //  rl.setGravity(Gravity.CENTER);
-//        rl.addView(mProgressBar);
 
 
-       // hide();
     }
 
     public void show() {
@@ -58,6 +54,5 @@ public class ProgressBarHandler {
 
         layout.removeView(bar);
 
-        //mProgressBar.setVisibility(View.INVISIBLE);
     }
 }

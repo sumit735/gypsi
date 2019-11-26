@@ -1,4 +1,4 @@
-package com.example.gypsi.fragment;
+package com.release.gypsi.fragment;
 
 
 import android.content.Context;
@@ -24,11 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.example.gypsi.R;
-import com.example.gypsi.activities.MainActivity;
-import com.example.gypsi.helpers.ProgressBarHandler;
-
-
+import com.release.gypsi.R;
+import com.release.gypsi.activities.MainActivity;
+import com.release.gypsi.helpers.ProgressBarHandler;
 
 
 public class ContactUsFragment extends Fragment {

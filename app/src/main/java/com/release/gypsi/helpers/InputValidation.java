@@ -1,4 +1,4 @@
-package com.example.gypsi.helpers;
+package com.release.gypsi.helpers;
 
 import android.app.Activity;
 import android.content.Context;

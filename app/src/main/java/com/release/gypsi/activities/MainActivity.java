@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment1 = new HomeFragment();
                     return true;
                 case R.id.navigation_gifts:
-                    toolbar.setTitle("My Gifts");
+                    toolbar.setTitle("My Preferences");
                     Intent preference = new Intent(MainActivity.this,MyPreferencesActivity.class);
                     startActivity(preference);
                     return true;

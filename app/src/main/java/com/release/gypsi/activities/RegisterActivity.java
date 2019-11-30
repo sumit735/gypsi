@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +17,12 @@ import androidx.core.widget.NestedScrollView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,6 +33,9 @@ import com.release.gypsi.SharedPreferenceClass;
 import com.release.gypsi.helpers.InputValidation;
 import com.release.gypsi.model.User;
 import com.release.gypsi.sql.DatabaseHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -57,13 +67,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private User user;
     CallbackManager callbackManager;
     LoginButton loginButton;
+    String fbUserId = "";
+    TextView gmailTest;
+    private RelativeLayout googleSignView;
+    String fbEmail = "";
+    String fbName = "";
+    LoginButton loginWithFacebookButton;
     private static final String EMAIL = "email";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+//        AppEventsLogger.activateApp(RegisterActivity.this);
         callbackManager = CallbackManager.Factory.create();
 //        getSupportActionBar().hide();
         sharedPreferenceClass = new SharedPreferenceClass(RegisterActivity.this);
@@ -74,13 +90,120 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
 
-
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList(EMAIL));
         // If you are using in a fragment, call loginButton.setFragment(this);
+        callbackManager = CallbackManager.Factory.create();
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                // App code
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+            }
+        });
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+
+                        //progressDialog.dismiss();
+
+                        // App code
+                        GraphRequest request = GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(
+                                            JSONObject object,
+                                            GraphResponse response) {
 
 
+                                        JSONObject json = response.getJSONObject();
+                                        try {
+                                            if (json != null) {
 
+
+                                                String fName = "";
+                                                if ((json.has("id")) && json.getString("id").trim() != null && !json.getString("id").trim().isEmpty() && !json.getString("id").trim().equals("null") && !json.getString("id").trim().matches("")) {
+                                                    fbUserId = json.getString("id");
+                                                }
+                                                if ((json.has("first_name")) && json.getString("first_name").trim() != null && !json.getString("first_name").trim().isEmpty() && !json.getString("first_name").trim().equals("null") && !json.getString("first_name").trim().matches("")) {
+                                                    if ((json.has("last_name")) && json.getString("last_name").trim() != null && !json.getString("last_name").trim().isEmpty() && !json.getString("last_name").trim().equals("null") && !json.getString("last_name").trim().matches("")) {
+                                                        fbName = json.getString("first_name") + " " + json.getString("last_name");
+                                                    }
+                                                    fName = json.getString("first_name");
+                                                } else {
+
+                                                    if ((json.has("last_name")) && json.getString("last_name").trim() != null && !json.getString("last_name").trim().isEmpty() && !json.getString("last_name").trim().equals("null") && !json.getString("last_name").trim().matches("")) {
+                                                        fbName = json.getString("last_name");
+                                                        fName = json.getString("last_name");
+                                                    } else {
+                                                        if ((json.has("name")) && json.getString("name").trim() != null && !json.getString("name").trim().isEmpty() && !json.getString("name").trim().equals("null") && !json.getString("name").trim().matches("")) {
+                                                            fbName = json.getString("name");
+                                                            fName = json.getString("name").replace(" ", "").trim();
+                                                        }
+                                                    }
+
+                                                }
+
+                                  /*  if (fbName!=null && fbName.matches("")){
+                                        fbName = fbUserId;
+                                    }*/
+                                                if ((json.has("email")) && json.getString("email").trim() != null && !json.getString("email").trim().isEmpty() && !json.getString("email").trim().equals("null") && !json.getString("email").trim().matches("")) {
+                                                    fbEmail = json.getString("email");
+                                                } else {
+                                                    if (fbName != null && !fbName.matches("")) {
+                                                        fbEmail = fName + "@facebook.com";
+                                                    } else {
+                                                        fbName = fbUserId;
+                                                        fbEmail = fbUserId + "@facebook.com";
+                                                    }
+                                                }
+
+                                                loginButton.setVisibility(View.GONE);
+                                            //    ((RegisterActivity) context).handleFbUserDetails(fbUserId, fbEmail, fbName);
+//
+                                            }
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+//
+                                    }
+
+                                });
+
+
+                        Bundle parameters = new Bundle();
+                        parameters.putString("fields", "id,name,email,gender, birthday");
+                        request.setParameters(parameters);
+                        request.executeAsync();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
     }
 
     /**
@@ -206,5 +329,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
 
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+            super.onActivityResult(requestCode, resultCode, data);
+        }
 
 }

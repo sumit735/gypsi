@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "513183513936",
+    "firebase_url": "https://gypsi-541ec.firebaseio.com",
+    "project_id": "gypsi-541ec",
+    "storage_bucket": "gypsi-541ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513183513936:android:f3dcfc70af8b1a96e74055",
+        "android_client_info": {
+          "package_name": "com.release.gypsi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513183513936-pvn1eijar28ejn4t4et5bp4m61dd62ve.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.release.gypsi",
+            "certificate_hash": "47af3677ed57f8f27d1c0f46e5e5c0bbd0d265f3"
+          }
+        },
+        {
+          "client_id": "513183513936-up35rv9terncb6dhksore04ae6pcp76q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa7zqq22AJQw_Xspzza_uAKPb7cl2S1B8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513183513936-up35rv9terncb6dhksore04ae6pcp76q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -204,14 +204,14 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:background="#ffffff"
-                            android:padding="@dimen/pop_up_view_height"
+                            android:padding="10dp"
                             android:scaleType="fitXY"
                             android:visibility="gone" />
 
                         <ImageView
                             android:id="@+id/edit"
-                            android:layout_width="@dimen/changepas_height"
-                            android:layout_height="@dimen/changepas_height"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentTop="true"

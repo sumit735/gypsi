@@ -13,7 +13,7 @@
     <color name="toolbarTitleColor">#000000</color>
     <color name="transparent">#00000000</color>
     <color name="loader_color">#DD3D3D</color>
-    <color name="bgBottomNavigation">#fe485a</color>
+    <color name="bgBottomNavigation">#A76BCF</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="progress_bar_line">#CF9135</color>

@@ -5,11 +5,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mys3soft.mys3chat.Models.User;
-import com.mys3soft.mys3chat.Services.DataContext;
-import com.mys3soft.mys3chat.Services.LocalUserService;
-import com.mys3soft.mys3chat.Services.Tools;
+import com.release.gypsi.Models.User;
 import com.release.gypsi.R;
+import com.release.gypsi.Services.DataContext;
+import com.release.gypsi.Services.LocalUserService;
+import com.release.gypsi.Services.Tools;
 
 public class ActivityProfile extends AppCompatActivity {
 

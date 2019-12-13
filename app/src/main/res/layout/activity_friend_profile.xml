@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.mys3soft.mys3chat.ActivityFriendProfile">
+   >
 
     <ImageView
         android:layout_width="match_parent"

@@ -1,8 +1,10 @@
 package com.release.gypsi.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -31,13 +33,25 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.release.gypsi.R;
 import com.release.gypsi.SharedPreferenceClass;
 import com.release.gypsi.helpers.InputValidation;
+import com.release.gypsi.helpers.ProgressBarHandler;
 import com.release.gypsi.model.User;
 import com.release.gypsi.sql.DatabaseHelper;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by lalit on 8/27/2016.
@@ -74,6 +88,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     String fbName = "";
     LoginButton loginWithFacebookButton;
     private static final String EMAIL = "email";
+    String regNameStr, regEmailStr, regPasswordStr, regPhoneStr;
+    int corePoolSize = 60;
+    int maximumPoolSize = 80;
+    int keepAliveTime = 10;
+    GetUserDetails asyncReg;
+    BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(maximumPoolSize);
+    Executor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.SECONDS, workQueue);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,8 +108,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initViews();
         initListeners();
         initObjects();
-
-
 
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -173,7 +193,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                                 }
 
                                                 loginButton.setVisibility(View.GONE);
-                                            //    ((RegisterActivity) context).handleFbUserDetails(fbUserId, fbEmail, fbName);
+                                                //    ((RegisterActivity) context).handleFbUserDetails(fbUserId, fbEmail, fbName);
 //
                                             }
 
@@ -258,11 +278,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (v.getId()) {
 
             case R.id.appCompatButtonRegister:
-                postDataToSQLite();
+                //API Calling
+                asyncReg = new GetUserDetails();
+                asyncReg.executeOnExecutor(threadPoolExecutor);
                 break;
 
             case R.id.appCompatTextViewLoginLink:
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -295,14 +317,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
 
-            sharedPreferenceClass.setValue_string("LOGIN_STATUS","1");
-          //  sharedPreferenceClass.setValue_string("LOGIN_ID",user_id);
-            sharedPreferenceClass.setValue_string("EMAIL_ID",textInputEditTextEmail.getText().toString().trim());
-            sharedPreferenceClass.setValue_string("NAME_STR",textInputEditTextName.getText().toString().trim());
+            sharedPreferenceClass.setValue_string("LOGIN_STATUS", "1");
+            //  sharedPreferenceClass.setValue_string("LOGIN_ID",user_id);
+            sharedPreferenceClass.setValue_string("EMAIL_ID", textInputEditTextEmail.getText().toString().trim());
+            sharedPreferenceClass.setValue_string("NAME_STR", textInputEditTextName.getText().toString().trim());
 
             databaseHelper.addUser(user);
             Intent intent = new Intent(
-                    RegisterActivity.this,MainActivity.class);
+                    RegisterActivity.this, MainActivity.class);
             startActivity(intent);
             // Snack Bar to show success message that record saved successfully
             Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
@@ -328,11 +350,105 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public class GetUserDetails extends AsyncTask<Void, String, JSONArray> {
+        JSONArray array;
+        ProgressBarHandler pDialog;
 
         @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-            super.onActivityResult(requestCode, resultCode, data);
+        protected JSONArray doInBackground(Void... params) {
+
+            try {
+
+                regNameStr = textInputEditTextName.getText().toString().trim();
+                regEmailStr = editEmailStr.getText().toString().trim();
+                regPasswordStr = editPasswordStr.getText().toString().trim();
+                regPhoneStr = editPhoneStr.getText().toString().trim();
+
+                URL url = new URL("http://gvitechnology.com/gypsi/api/register.php?appid=735427");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setRequestProperty("Content-Type", "application/json");
+                httpURLConnection.setRequestProperty("Accept", "application/json");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setRequestProperty("Connection", "Keep-Alive");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+                JSONObject postData = new JSONObject();
+                try {
+                    postData.put("username", regNameStr);
+                    postData.put("email",regEmailStr );
+                    postData.put("password",regPasswordStr );
+                    postData.put("phone",regPhoneStr );
+                    postData.put("profileimage", "");
+
+                    Log.v("SUBHA", "json Data == " + postData.toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                DataOutputStream outputStream = new DataOutputStream(httpURLConnection.getOutputStream());
+                outputStream.write(postData.toString().getBytes("UTF-8"));
+
+                int code = httpURLConnection.getResponseCode();
+
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+
+                String line = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line);
+                }
+                bufferedReader.close();
+
+                String response = stringBuilder.toString();
+                JSONObject jsonResponse = new JSONObject(response);
+
+                Log.v("SUBHA", "message == " + jsonResponse.getString("message"));
+
+
+
+
+
+              //  sharedPreferenceClass.setValue_string("LOGIN_STATUS", "1");
+
+
+                postDataToSQLite();
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+            return array;
+
+
         }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressBarHandler(RegisterActivity.this);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected void onPostExecute(JSONArray array) {
+            super.onPostExecute(array);
+
+
+        }
+    }
 
 }

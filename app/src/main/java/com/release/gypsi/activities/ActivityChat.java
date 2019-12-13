@@ -47,6 +47,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconTextView;
 
 
 public class ActivityChat extends AppCompatActivity {
@@ -208,7 +211,7 @@ public class ActivityChat extends AppCompatActivity {
         refFriend.addChildEventListener(refFriendListener);
         StaticInfo.UserCurrentChatFriendEmail = friendEmail;
         refUser = new Firebase(StaticInfo.UsersURL + "/" + user.Email);
-        submit_btn = (FloatingActionButton) findViewById(R.id.submit_btn);
+      //  submit_btn = (FloatingActionButton) findViewById(R.id.submit_btn);
 
         messageArea.addTextChangedListener(new TextWatcher() {
             @Override
@@ -234,8 +237,8 @@ public class ActivityChat extends AppCompatActivity {
             }
         });
 
-        View rootView = findViewById(R.id.rootLayout);
-       /* EmojiconEditText emojiconEditText = (EmojiconEditText) findViewById(R.id.et_Message);
+     /*  View rootView = findViewById(R.id.rootLayout);
+       EmojiconEditText emojiconEditText = (EmojiconEditText) findViewById(R.id.et_Message);
         ImageView emojiImageView = (ImageView) findViewById(R.id.emoji_btn);
 
         final EmojIconActions emojIcon = new EmojIconActions(this, rootView, emojiconEditText, emojiImageView, "#1c2764", "#e8e8e8", "#f4f4f4");

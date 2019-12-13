@@ -11,10 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.client.Firebase;
-import com.mys3soft.mys3chat.Models.StaticInfo;
-import com.mys3soft.mys3chat.Services.IFireBaseAPI;
-import com.mys3soft.mys3chat.Services.Tools;
+import com.release.gypsi.Models.StaticInfo;
 import com.release.gypsi.R;
+import com.release.gypsi.Services.IFireBaseAPI;
+import com.release.gypsi.Services.Tools;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -41,10 +41,10 @@ public class ActivityRegister extends AppCompatActivity {
         pd = new ProgressDialog(this);
         pd.setMessage("Loading...");
 
-        et_Email = (EditText) findViewById(R.id.et_Email_Rigister);
+    /*    et_Email = (EditText) findViewById(R.id.et_Email_Rigister);
         et_Password = (EditText) findViewById(R.id.et_Password_Rigister);
         et_FirstName = (EditText) findViewById(R.id.et_FirstName_Rigister);
-        et_LastName = (EditText) findViewById(R.id.et_LastName_Rigister);
+        et_LastName = (EditText) findViewById(R.id.et_LastName_Rigister);*/
 
     }
 

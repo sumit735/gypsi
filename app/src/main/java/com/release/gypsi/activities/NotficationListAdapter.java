@@ -19,10 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.firebase.client.Firebase;
-import com.mys3soft.mys3chat.Models.NotificationModel;
-import com.mys3soft.mys3chat.Models.StaticInfo;
-import com.mys3soft.mys3chat.Models.User;
-import com.mys3soft.mys3chat.Services.LocalUserService;
+
 import com.release.gypsi.Models.NotificationModel;
 import com.release.gypsi.Models.StaticInfo;
 import com.release.gypsi.Models.User;
@@ -73,8 +70,8 @@ public class NotficationListAdapter extends ArrayAdapter<NotificationModel> {
             acceptBtn.setBackgroundColor(Color.TRANSPARENT);
             rejectBtn.setBackgroundColor(Color.TRANSPARENT);
 
-            acceptBtn.setImageResource(R.drawable.emoji_2705);
-            rejectBtn.setImageResource(R.drawable.emoji_274c);
+            acceptBtn.setImageResource(R.drawable.logo);
+            rejectBtn.setImageResource(R.drawable.logo);
 
             setCustomOnClick(acceptBtn, model.EmailFrom, model.FirstName, model.LastName);
             onRejectClick(rejectBtn, position, model.FirstName + " " + model.LastName);

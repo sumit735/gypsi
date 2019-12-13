@@ -24,6 +24,9 @@
     <string name="title_cart">Cart</string>
     <string name="title_profile">Profile</string>
     <string name="text_title">Android Tutorials Hub</string>
+    <string name="Profile">Profile</string>
+    <string name="AddContacts">Add Contacts</string>
+    <string name="Logout">Logout</string>
 
     <!--Facebook app id-->
     <string name="facebook_app_id">2402179506554236</string>

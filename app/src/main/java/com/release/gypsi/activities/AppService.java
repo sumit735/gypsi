@@ -13,12 +13,13 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.mys3soft.mys3chat.Models.StaticInfo;
-import com.mys3soft.mys3chat.Models.User;
-import com.mys3soft.mys3chat.Services.DataContext;
-import com.mys3soft.mys3chat.Services.LocalUserService;
-import com.mys3soft.mys3chat.Services.Tools;
+
+import com.release.gypsi.Models.StaticInfo;
+import com.release.gypsi.Models.User;
 import com.release.gypsi.R;
+import com.release.gypsi.Services.DataContext;
+import com.release.gypsi.Services.LocalUserService;
+import com.release.gypsi.Services.Tools;
 
 import java.util.Map;
 

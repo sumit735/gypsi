@@ -27,13 +27,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.firebase.client.Firebase;
 import com.google.android.material.tabs.TabLayout;
-import com.mys3soft.mys3chat.Models.Message;
-import com.mys3soft.mys3chat.Models.StaticInfo;
-import com.mys3soft.mys3chat.Models.User;
-import com.mys3soft.mys3chat.Services.DataContext;
-import com.mys3soft.mys3chat.Services.IFireBaseAPI;
-import com.mys3soft.mys3chat.Services.LocalUserService;
-import com.mys3soft.mys3chat.Services.Tools;
 import com.release.gypsi.Models.Message;
 import com.release.gypsi.Models.StaticInfo;
 import com.release.gypsi.Models.User;
@@ -71,7 +64,7 @@ public class ActivityMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activitymain);
         Firebase.setAndroidContext(this);
 
         db = new DataContext(this, null, null, 1);

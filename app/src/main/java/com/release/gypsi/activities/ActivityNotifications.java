@@ -10,11 +10,7 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.mys3soft.mys3chat.Models.NotificationModel;
-import com.mys3soft.mys3chat.Models.StaticInfo;
-import com.mys3soft.mys3chat.Models.User;
-import com.mys3soft.mys3chat.Services.LocalUserService;
-import com.mys3soft.mys3chat.Services.Tools;
+
 import com.release.gypsi.Models.NotificationModel;
 import com.release.gypsi.Models.StaticInfo;
 import com.release.gypsi.Models.User;
